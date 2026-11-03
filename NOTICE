@@ -1,0 +1,15 @@
+OpenEVision
+Copyright (c) 2026 iefedev
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, version 2 only (SPDX-License-Identifier: GPL-2.0-only).
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License in the LICENSE file for
+more details.
+
+The EVision command set and the default LED matrix used by this program are
+derived from OpenRGB (https://gitlab.com/CalcProgrammer1/OpenRGB), which is
+licensed under GPL-2.0-only.

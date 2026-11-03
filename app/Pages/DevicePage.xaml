@@ -1,0 +1,70 @@
+<Page x:Class="OpenEVision.Pages.DevicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:controls="clr-namespace:OpenEVision.Controls"
+      Title="Device">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,16,32,32" MaxWidth="1000">
+            <ui:TextBlock FontTypography="Title" Text="Device" Margin="0,0,0,20" />
+
+            <ui:InfoBar x:Name="Error" Severity="Error" Title="Cannot reach the keyboard" IsClosable="False" Margin="0,0,0,12" />
+
+            <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}" BorderThickness="1"
+                    CornerRadius="8" Padding="24">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="24" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <controls:KeyboardPreview x:Name="Preview" ShowLabels="False" />
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                        <ui:TextBlock x:Name="ProductName" FontTypography="Subtitle" Text="RGB Keyboard" />
+                        <ui:TextBlock x:Name="ProductDetail" FontTypography="Caption" Margin="0,2,0,10" TextWrapping="Wrap"
+                                      Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="StatusDot" Width="8" Height="8" Margin="0,0,8,0" Fill="Gray" />
+                            <ui:TextBlock x:Name="StatusText" Text="Connecting…" />
+                        </StackPanel>
+                        <ui:Button x:Name="RefreshButton" Content="Refresh" Margin="0,16,0,0" Click="Refresh_Click">
+                            <ui:Button.Icon><ui:SymbolIcon Symbol="ArrowClockwise24" /></ui:Button.Icon>
+                        </ui:Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <ui:TextBlock FontTypography="BodyStrong" Text="Settings" Margin="0,24,0,8" />
+
+            <ui:CardAction Click="Lighting_Click" Margin="0,0,0,4">
+                <ui:CardAction.Icon><ui:SymbolIcon Symbol="Lightbulb24" /></ui:CardAction.Icon>
+                <StackPanel>
+                    <ui:TextBlock FontTypography="Body" Text="Lighting" />
+                    <ui:TextBlock x:Name="ModeText" FontTypography="Caption" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="—" />
+                </StackPanel>
+            </ui:CardAction>
+            <ui:CardAction Click="Effects_Click" Margin="0,0,0,4">
+                <ui:CardAction.Icon><ui:SymbolIcon Symbol="Sparkle24" /></ui:CardAction.Icon>
+                <StackPanel>
+                    <ui:TextBlock FontTypography="Body" Text="Software effects" />
+                    <ui:TextBlock x:Name="EffectText" FontTypography="Caption" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Music, typing reaction, system gauges, animations" />
+                </StackPanel>
+            </ui:CardAction>
+            <ui:CardAction Click="Paint_Click" Margin="0,0,0,4">
+                <ui:CardAction.Icon><ui:SymbolIcon Symbol="PaintBrush24" /></ui:CardAction.Icon>
+                <StackPanel>
+                    <ui:TextBlock FontTypography="Body" Text="Key painting" />
+                    <ui:TextBlock FontTypography="Caption" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Give every key its own color and save it to the Custom mode" />
+                </StackPanel>
+            </ui:CardAction>
+            <ui:CardAction Click="Remap_Click" Margin="0,0,0,4">
+                <ui:CardAction.Icon><ui:SymbolIcon Symbol="ArrowSwap24" /></ui:CardAction.Icon>
+                <StackPanel>
+                    <ui:TextBlock FontTypography="Body" Text="Key remapping" />
+                    <ui:TextBlock FontTypography="Caption" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Assign keys to other keys or to media controls" />
+                </StackPanel>
+            </ui:CardAction>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

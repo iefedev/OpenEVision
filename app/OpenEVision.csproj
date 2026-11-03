@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <!-- Only for the tray NotifyIcon; its namespaces are not imported globally to avoid WPF name clashes. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>OpenEVision</AssemblyName>
+    <RootNamespace>OpenEVision</RootNamespace>
+    <Product>OpenEVision</Product>
+    <AssemblyTitle>OpenEVision</AssemblyTitle>
+    <Authors>iefedev</Authors>
+    <Copyright>Copyright (c) 2026 iefedev</Copyright>
+    <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
+    <Version>0.2.0</Version>
+    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <!--
+    dotnet publish -c Release: one self-contained win-x64 exe, no .NET install needed on the target machine.
+    Only applied while publishing, so plain builds (and the test project that references this one) stay framework-dependent.
+  -->
+  <PropertyGroup Condition="'$(_IsPublishing)' == 'true'">
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Only WASAPI loopback capture + FFT are needed, not the whole NAudio meta package. -->
+    <PackageReference Include="NAudio.Wasapi" Version="3.2.0" />
+    <PackageReference Include="WPF-UI" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+  <!-- Developer switches (probe, effect-test, write-test, demo, snapshot; see Dev/DevSwitches.cs) exist only in Debug builds. -->
+  <ItemGroup Condition="'$(Configuration)' != 'Debug'">
+    <Compile Remove="Dev\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="OpenEVision.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- On-screen key layout of the supported model (see Device/DeviceProfile.cs). -->
+    <EmbeddedResource Include="Resources\layout-505b-iso-tr.json" LogicalName="layout-505b-iso-tr.json" />
+  </ItemGroup>
+
+</Project>

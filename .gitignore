@@ -1,0 +1,9 @@
+dist/
+app/bin/
+app/obj/
+tests/*/bin/
+tests/*/obj/
+backups/
+.claude/
+.vs/
+*.user

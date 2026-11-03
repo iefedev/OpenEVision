@@ -1,0 +1,29 @@
+<Page x:Class="OpenEVision.Pages.CustomEffectsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      Title="Custom effects">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,16,32,32" MaxWidth="1000">
+            <ui:TextBlock FontTypography="Title" Text="Custom effects" Margin="0,0,0,4" />
+            <ui:TextBlock FontTypography="Body" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,20" TextWrapping="Wrap"
+                          Text="Build your own effect by stacking layers: a base (plasma, fire, solid color…) with layers on top that react to key presses. Each layer can be limited to specific keys." />
+
+            <ui:InfoBar x:Name="Error" Severity="Error" Title="Operation failed" IsClosable="True" Margin="0,0,0,12" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                <ui:Button Content="New effect" Appearance="Primary" Click="New_Click" Margin="0,0,8,0">
+                    <ui:Button.Icon><ui:SymbolIcon Symbol="Add24" /></ui:Button.Icon>
+                </ui:Button>
+                <ui:Button Content="Import" Click="Import_Click" Margin="0,0,8,0">
+                    <ui:Button.Icon><ui:SymbolIcon Symbol="ArrowImport24" /></ui:Button.Icon>
+                </ui:Button>
+                <ui:Button x:Name="StopButton" Content="Stop" Click="Stop_Click">
+                    <ui:Button.Icon><ui:SymbolIcon Symbol="Stop24" /></ui:Button.Icon>
+                </ui:Button>
+            </StackPanel>
+
+            <StackPanel x:Name="List" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

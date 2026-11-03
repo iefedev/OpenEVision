@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Test
+        run: dotnet test tests/OpenEVision.Tests/OpenEVision.Tests.csproj -c Debug -nologo
+
+      - name: Publish OpenEVision.exe (win-x64, self-contained, single file)
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart('v')
+          dotnet publish app/OpenEVision.csproj -c Release -nologo -o dist "-p:Version=$version"
+          Compress-Archive -Path dist/OpenEVision.exe, LICENSE, NOTICE, README.md -DestinationPath "dist/OpenEVision-$version-win-x64.zip"
+          Get-FileHash dist/OpenEVision.exe, "dist/OpenEVision-$version-win-x64.zip" -Algorithm SHA256 |
+            ForEach-Object { "$($_.Hash.ToLower())  $(Split-Path $_.Path -Leaf)" } |
+            Set-Content dist/SHA256SUMS.txt -Encoding ascii
+
+      - name: Create GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart('v')
+          gh release create "${{ github.ref_name }}" `
+            dist/OpenEVision.exe "dist/OpenEVision-$version-win-x64.zip" dist/SHA256SUMS.txt `
+            --title "OpenEVision $version" --generate-notes

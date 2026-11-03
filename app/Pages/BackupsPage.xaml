@@ -1,0 +1,41 @@
+<Page x:Class="OpenEVision.Pages.BackupsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      Title="Backups">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,16,32,32" MaxWidth="1000">
+            <ui:TextBlock FontTypography="Title" Text="Backups" Margin="0,0,0,4" />
+            <ui:TextBlock FontTypography="Body" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,20" TextWrapping="Wrap"
+                          Text="A backup stores the lighting settings, key assignments and Custom mode colors, and can write them back. The factory state is read from this keyboard automatically the first time the app connects, before anything is written." />
+
+            <ui:InfoBar x:Name="Error" Severity="Error" Title="Operation failed" IsClosable="True" Margin="0,0,0,12" />
+            <ui:InfoBar x:Name="Info" Severity="Success" IsClosable="True" Margin="0,0,0,12" />
+
+            <ui:CardControl Margin="0,0,0,4">
+                <ui:CardControl.Icon><ui:SymbolIcon Symbol="Add24" /></ui:CardControl.Icon>
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <ui:TextBlock Text="Back up now" />
+                        <ui:TextBlock FontTypography="Caption" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="The keyboard's current settings" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <StackPanel Orientation="Horizontal">
+                    <ui:TextBox x:Name="LabelBox" Width="220" PlaceholderText="Label (optional)" Margin="0,0,8,0" />
+                    <ui:Button x:Name="CreateButton" Content="Back up" Appearance="Primary" Click="Create_Click" />
+                </StackPanel>
+            </ui:CardControl>
+
+            <ui:CardAction Margin="0,0,0,4" Click="OpenFolder_Click">
+                <ui:CardAction.Icon><ui:SymbolIcon Symbol="FolderOpen24" /></ui:CardAction.Icon>
+                <StackPanel>
+                    <ui:TextBlock Text="Open backup folder" />
+                    <ui:TextBlock x:Name="FolderText" FontTypography="Caption" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+            </ui:CardAction>
+
+            <ui:TextBlock FontTypography="BodyStrong" Text="Saved backups" Margin="0,24,0,8" />
+            <StackPanel x:Name="List" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

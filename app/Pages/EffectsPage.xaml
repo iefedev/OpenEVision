@@ -1,0 +1,38 @@
+<Page x:Class="OpenEVision.Pages.EffectsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      Title="Effects">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,16,32,32" MaxWidth="1000">
+            <ui:TextBlock FontTypography="Title" Text="Software effects" Margin="0,0,0,4" />
+            <ui:TextBlock FontTypography="Body" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,20" TextWrapping="Wrap"
+                          Text="Computed on the PC and streamed live to the keyboard's RAM; nothing is written to flash. They run while the app is open; when stopped, the keyboard returns to its own lighting mode." />
+
+            <ui:InfoBar x:Name="Error" Severity="Error" Title="Could not start the effect" IsClosable="True" Margin="0,0,0,12" />
+
+            <ui:CardControl Margin="0,0,0,4">
+                <ui:CardControl.Icon><ui:SymbolIcon x:Name="StatusIcon" Symbol="Pause24" /></ui:CardControl.Icon>
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <ui:TextBlock x:Name="StatusTitle" Text="No effect running" />
+                        <ui:TextBlock x:Name="StatusDetail" FontTypography="Caption" Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                      Text="The keyboard is in its own lighting mode" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:Button x:Name="StopButton" Content="Stop" Click="Stop_Click" IsEnabled="False">
+                    <ui:Button.Icon><ui:SymbolIcon Symbol="Stop24" /></ui:Button.Icon>
+                </ui:Button>
+            </ui:CardControl>
+
+            <ui:CardControl Margin="0,0,0,4">
+                <ui:CardControl.Icon><ui:SymbolIcon Symbol="BrightnessHigh24" /></ui:CardControl.Icon>
+                <ui:CardControl.Header><ui:TextBlock Text="Brightness" /></ui:CardControl.Header>
+                <Slider x:Name="BrightnessSlider" Width="240" Minimum="0.05" Maximum="1" Value="1" ValueChanged="Brightness_Changed" />
+            </ui:CardControl>
+
+            <ui:TextBlock FontTypography="BodyStrong" Text="Effects" Margin="0,24,0,8" />
+            <StackPanel x:Name="EffectList" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

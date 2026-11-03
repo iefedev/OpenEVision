@@ -1,0 +1,22 @@
+{
+  "_comment": "Turkish-Q, ISO, full-size (EVision 320F:505B, 126 LEDs). Each key: [code, keycap label, width in key units]; codes follow the KeyboardEvent.code names. A number alone is a gap. Fn never reaches the PC, so it is shown and lit but never detected.",
+  "rows": [
+    [["Escape", "Esc"], 1, ["F1", "F1"], ["F2", "F2"], ["F3", "F3"], ["F4", "F4"], 0.5, ["F5", "F5"], ["F6", "F6"], ["F7", "F7"], ["F8", "F8"], 0.5,
+     ["F9", "F9"], ["F10", "F10"], ["F11", "F11"], ["F12", "F12"], 0.25, ["PrintScreen", "PrtSc"], ["ScrollLock", "ScrLk"], ["Pause", "Pause"]],
+    [["Backquote", "\""], ["Digit1", "1"], ["Digit2", "2"], ["Digit3", "3"], ["Digit4", "4"], ["Digit5", "5"], ["Digit6", "6"], ["Digit7", "7"],
+     ["Digit8", "8"], ["Digit9", "9"], ["Digit0", "0"], ["Minus", "*"], ["Equal", "-"], ["Backspace", "⌫", 2], 0.25,
+     ["Insert", "Ins"], ["Home", "Home"], ["PageUp", "PgUp"], 0.25, ["NumLock", "Num"], ["NumpadDivide", "/"], ["NumpadMultiply", "*"], ["NumpadSubtract", "-"]],
+    [["Tab", "Tab", 1.5], ["KeyQ", "Q"], ["KeyW", "W"], ["KeyE", "E"], ["KeyR", "R"], ["KeyT", "T"], ["KeyY", "Y"], ["KeyU", "U"], ["KeyI", "I"],
+     ["KeyO", "O"], ["KeyP", "P"], ["BracketLeft", "Ğ"], ["BracketRight", "Ü"], ["Enter", "Enter", 1.5], 0.25,
+     ["Delete", "Del"], ["End", "End"], ["PageDown", "PgDn"], 0.25, ["Numpad7", "7"], ["Numpad8", "8"], ["Numpad9", "9"], ["NumpadAdd", "+"]],
+    [["CapsLock", "Caps", 1.75], ["KeyA", "A"], ["KeyS", "S"], ["KeyD", "D"], ["KeyF", "F"], ["KeyG", "G"], ["KeyH", "H"], ["KeyJ", "J"],
+     ["KeyK", "K"], ["KeyL", "L"], ["Semicolon", "Ş"], ["Quote", "İ"], ["Backslash", ","], 1.25, 0.25, 3, 0.25,
+     ["Numpad4", "4"], ["Numpad5", "5"], ["Numpad6", "6"]],
+    [["ShiftLeft", "Shift", 1.25], ["IntlBackslash", "<"], ["KeyZ", "Z"], ["KeyX", "X"], ["KeyC", "C"], ["KeyV", "V"], ["KeyB", "B"], ["KeyN", "N"],
+     ["KeyM", "M"], ["Comma", "Ö"], ["Period", "Ç"], ["Slash", "."], ["ShiftRight", "Shift", 2.75], 0.25, 1, ["ArrowUp", "↑"], 1, 0.25,
+     ["Numpad1", "1"], ["Numpad2", "2"], ["Numpad3", "3"], ["NumpadEnter", "Ent"]],
+    [["ControlLeft", "Ctrl", 1.25], ["MetaLeft", "Win", 1.25], ["AltLeft", "Alt", 1.25], ["Space", "", 6.25], ["AltRight", "AltGr", 1.25],
+     ["Fn", "Fn", 1.25], ["ContextMenu", "Menu", 1.25], ["ControlRight", "Ctrl", 1.25], 0.25,
+     ["ArrowLeft", "←"], ["ArrowDown", "↓"], ["ArrowRight", "→"], 0.25, ["Numpad0", "0", 2], ["NumpadDecimal", ","]]
+  ]
+}
