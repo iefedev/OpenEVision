@@ -38,4 +38,5 @@ jobs:
           $version = "${{ github.ref_name }}".TrimStart('v')
           gh release create "${{ github.ref_name }}" `
             dist/OpenEVision.exe "dist/OpenEVision-$version-win-x64.zip" dist/SHA256SUMS.txt `
-            --title "OpenEVision $version" --generate-notes
+            --title "OpenEVision $version" `
+            --notes "Windows 10/11 x64. Download **OpenEVision.exe** (or the zip) and run it; read the README's warning about keyboard flash writes first. Check downloads against SHA256SUMS.txt."
